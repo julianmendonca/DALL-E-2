@@ -5,7 +5,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 export default async function handler(req, res) {
-  const text = req.query.text || "";
+  const text = req.query.text || req.body.text || "";
   if (!text) {
     res.status(400).json({ error: "No text provided" });
   }
